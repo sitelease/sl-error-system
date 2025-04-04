@@ -2,11 +2,10 @@
 
 namespace Sitelease\ErrorSystem;
 
-use ViewableData;
 use ErrorException;
-use Director;
-use Controller;
-
+use SilverStripe\Control\Director;
+use SilverStripe\Control\Controller;
+use SilverStripe\View\ViewableData;
 
 /**
  * This class is the main error class for sitelease's error system.
@@ -57,7 +56,6 @@ class SLErrorSystem extends ViewableData
      */
     private static $mailSubjectSuffix = "";
 
-
     /**
      * A custom error handler that converts all php errors into exceptions that
      * can be caught using a try/catch.
@@ -91,7 +89,7 @@ class SLErrorSystem extends ViewableData
      *
      * @author Benjamin Blake (sitelease.ca)
      * @param  string $classAndMethodName The name of the file and method that triggered the error. Use __METHOD__.
-     * @param  string $message An extra mesage that will be presented with the official message. Useful for describing what happened.
+     * @param  string $message An extra message that will be presented with the official message. Useful for describing what happened.
      * @param  string $error The official error or exception message (optional)
      * @return boolean Returns true if mail successfully accepted for delivery. Otherwise returns false
      */
@@ -125,7 +123,7 @@ class SLErrorSystem extends ViewableData
      *
      * @param  [type] $controller         The controller that will be used for the redirect
      * @param  string $classAndMethodName The name of the file and method that triggered the error. Use __METHOD__.
-     * @param  string $message An extra mesage that will be presented with the official message. Useful for describing what happened.
+     * @param  string $message An extra message that will be presented with the official message. Useful for describing what happened.
      * @param  string $error The official error or exception message (optional)
      * @return [type] Returns a redirect to the server error page
      */
@@ -133,7 +131,7 @@ class SLErrorSystem extends ViewableData
     {
         $absoluteSiteURL = Director::absoluteBaseURL();
         if (empty($devMessage)) {
-            $devMessage = "A 500 error occured on " . $absoluteSiteURL;
+            $devMessage = "A 500 error occurred on " . $absoluteSiteURL;
         }
         self::sendErrorNotification($classAndMethodName, $message, $error);
         return $controller->redirect(Controller::join_links(
