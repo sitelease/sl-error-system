@@ -10,21 +10,21 @@
 class SLErrorSystem extends ViewableData
 {
     /**
-    * Used to construct the server error page url.
-    *
-    * @author Benjamin Blake (sitelease.ca)
-    * @var string
-    * @config
-    */
+     * Used to construct the server error page url.
+     *
+     * @author Benjamin Blake (sitelease.ca)
+     * @var string
+     * @config
+     */
     private static $errorPageURLSegment = "server-error/";
 
     /**
-    * The Email address you would like notified when an error occurs on the site
-    *
-    * @author Benjamin Blake (sitelease.ca)
-    * @var string
-    * @config
-    */
+     * The Email address you would like notified when an error occurs on the site
+     *
+     * @author Benjamin Blake (sitelease.ca)
+     * @var string
+     * @config
+     */
     private static $mailTo = "Administrator <error_notification@sitelease.ca>";
 
     /**
@@ -68,7 +68,8 @@ class SLErrorSystem extends ViewableData
      * @param  array  $errcontext [description]
      * @return [type]             [description]
      */
-    public static function errorsAsExceptionsErrorHandler($errno, $errstr, $errfile, $errline, array $errcontext) {
+    public static function errorsAsExceptionsErrorHandler($errno, $errstr, $errfile, $errline, array $errcontext)
+    {
         // error was suppressed with the @-operator
         if (0 === error_reporting()) {
             return false;
@@ -91,7 +92,7 @@ class SLErrorSystem extends ViewableData
         // Build message from parameters
         $mailMessage = $classAndMethodName;
         $mailMessage .= " - " . $message;
-        if(!empty($error)){
+        if (!empty($error)) {
             $mailMessage .= "<br  />Error: " . $error;
         }
         // Log the error to the system's error log
@@ -102,9 +103,9 @@ class SLErrorSystem extends ViewableData
         // Try to deliver the email
         $delivery = mail($mailTo, $mailSubject, $mailMessage);
         // Return true if mail successfully accepted for delivery
-        if($delivery){
+        if ($delivery) {
             return true;
-        }else{
+        } else {
             // Otherwise returns false
             return false;
         }
@@ -123,7 +124,7 @@ class SLErrorSystem extends ViewableData
     public static function throw500Error($controller, $classAndMethodName, $message, $error = null)
     {
         $absoluteSiteURL = Director::absoluteBaseURL();
-        if(empty($devMessage)){
+        if (empty($devMessage)) {
             $devMessage = "A 500 error occured on " . $absoluteSiteURL;
         }
         self::sendErrorNotification($classAndMethodName, $message, $error);

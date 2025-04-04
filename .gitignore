@@ -1,2 +1,5 @@
-node_modules/*
-vendor/*
+/tests/*
+vendor/
+resources/
+public/
+composer.lock

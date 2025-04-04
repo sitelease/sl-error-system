@@ -1,16 +1,31 @@
 {
     "name": "sitelease/sl-error-system",
-    "description": "This package contains error handling/notifying helper classes for sitelease's silverstripe modules",
-    "type": "sitelease-addon",
-    "keywords": ["sitelease","error","system","addon"],
-    "homepage": "http://www.sitelease.ca",
+    "description": "Adds standard sitelease error handling/notifying classes to silverstripe",
+    "type": "silverstripe-vendormodule",
+    "keywords": ["silverstripe", "sitelease", "error", "system"],
     "license": "siteLease.ca License",
     "authors": [
         {
+            "name": "Jim Blake",
+            "email": "teamleader@sitelease.ca",
+            "homepage": "http://www.sitelease.ca",
+            "role": "Team Leader"
+        },
+        {
             "name": "Benjamin Blake",
             "email": "ben@sitelease.ca",
+            "homepage": "http://www.sitelease.ca",
             "role": "Developer"
         }
     ],
-    "require": {}
+    "require": {
+  		"silverstripe/framework": "^5"
+  	},
+    "autoload": {
+        "psr-4": {
+            "Sitelease\\ErrorSystem\\": "src/"
+        }
+    },
+    "prefer-stable" : true,
+    "minimum-stability" : "dev"
 }
