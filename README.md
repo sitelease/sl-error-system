@@ -14,7 +14,7 @@ composer require sitelease/sl-error-system
 
 **Remember:** After installing the package, run a dev build
 
-## Grid Action Reference
+## Error System Reference
 Below is a list of error classes available with this module
 
 | Name          | Description                                        |
