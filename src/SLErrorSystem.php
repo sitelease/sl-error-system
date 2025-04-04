@@ -1,5 +1,13 @@
 <?php
 
+namespace Sitelease\ErrorSystem;
+
+use ViewableData;
+use ErrorException;
+use Director;
+use Controller;
+
+
 /**
  * This class is the main error class for sitelease's error system.
  *
